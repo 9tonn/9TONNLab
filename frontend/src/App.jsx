@@ -14,8 +14,8 @@ const C = {
   green:"#22C55E", red:"#EF4444", blue:"#60A5FA",
   purple:"#A78BFA", pink:"#F472B6", yellow:"#F59E0B",
 }
-const WS_URL  = "ws://localhost:3001"
-const API_URL = "http://localhost:3001"
+const WS_URL  = "wss://9tonnlab-production.up.railway.app"
+const API_URL = "https://9tonnlab-production.up.railway.app"
 const FAPI    = "https://fapi.binance.com"
 const CG      = "https://api.coingecko.com/api/v3"
 
