@@ -131,6 +131,7 @@ app.post("/ai/chat", async (req, res) => {
     const data = await response.json()
     res.json({ text: data.content?.[0]?.text || "Ошибка" })
   } catch (e) {
+    console.error("AI ERROR:", e.message, e.stack);
     res.status(500).json({ error: e.message })
   }
 })
