@@ -9,7 +9,7 @@ const app    = express()
 const server = createServer(app)   // HTTP сервер
 const wss    = new WebSocketServer({ server })  // WS поверх HTTP
 
-app.use(cors())
+app.use(cors({ origin: "*", methods: ["GET","POST"] }))
 app.use(express.json())
 
 // ── ХРАНИЛИЩЕ ЦЕН ────────────────────────────────────────
