@@ -111,7 +111,8 @@ app.get("/health", (req, res) => {
 // ── AI CHAT ───────────────────────────────────────────────
 app.options("/ai/chat",(req,res)=>{res.header("Access-Control-Allow-Origin","*");res.header("Access-Control-Allow-Methods","POST");res.header("Access-Control-Allow-Headers","Content-Type");res.send();});
 app.post("/ai/chat", async (req, res) => {
-  const { messages, context } = req.body
+  const { messages, context, marketContext } = req.body
+    const ctx = context || marketContext || ""
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -123,7 +124,7 @@ app.post("/ai/chat", async (req, res) => {
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 1000,
-        system: `Ты трейдинг-ассистент Pump&Pray. Данные рынка: ${context}. Отвечай по-русски кратко и конкретно.`,
+        system: `Ты трейдинг-ассистент Pump&Pray. Данные рынка: ${ctx}. Отвечай по-русски кратко и конкретно.`,
         messages
       })
     })
