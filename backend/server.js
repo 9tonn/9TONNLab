@@ -108,6 +108,7 @@ app.get("/health", (req, res) => {
 })
 
 // ── AI CHAT ───────────────────────────────────────────────
+app.options("/ai/chat",(req,res)=>{res.header("Access-Control-Allow-Origin","*");res.header("Access-Control-Allow-Methods","POST");res.header("Access-Control-Allow-Headers","Content-Type");res.send();});
 app.post("/ai/chat", async (req, res) => {
   const { messages, context } = req.body
   try {
