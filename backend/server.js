@@ -11,6 +11,7 @@ const wss    = new WebSocketServer({ server })  // WS поверх HTTP
 
 app.use(cors({ origin: "*", methods: ["GET","POST"] }))
 app.use(express.json())
+app.use((req,res,next)=>{res.setHeader("Cache-Control","no-store");res.setHeader("X-Accel-Buffering","no");next();})
 
 // ── ХРАНИЛИЩЕ ЦЕН ────────────────────────────────────────
 const state = {
